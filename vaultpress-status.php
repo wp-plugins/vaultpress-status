@@ -3,7 +3,7 @@
  * Plugin Name: VaultPress Status
  * Plugin URI: http://automattic.com/wordpress-plugins/
  * Description: Adds VaultPress' status to your admin bar. To give you that nice and secured feeling, even in the front-end of your website.
- * Version: 0.1
+ * Version: 0.2
  * Author: Luc De Brouwer
  * Author URI: http://www.lucdebrouwer.nl/
  *
@@ -15,32 +15,48 @@ function LDB_VaultPress_Status_render() {
 	$wp_admin_bar->add_menu( array(
 		'id' => 'LDB_VaultPress_status',
 		'title' => 'VaultPress Status',
-		'href' => '#'
+		'href' => '/wp-admin/admin.php?page=vaultpress'
 	) );
-	$wp_admin_bar->add_menu( array(
-	    'parent' => 'LDB_VaultPress_status',
-		'id' => 'LDB_VaultPress_Uploads',
-		'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->uploads_progress . ' %</div> Uploads',
-		'href' => '#'
-	) );
-	$wp_admin_bar->add_menu( array(
-	    'parent' => 'LDB_VaultPress_status',
-		'id' => 'LDB_VaultPress_Plugins',
-		'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->plugins_progress . ' %</div> Plugins',
-		'href' => '#'
-	) );
-	$wp_admin_bar->add_menu( array(
-	    'parent' => 'LDB_VaultPress_status',
-		'id' => 'LDB_VaultPress_Themes',
-		'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->themes_progress . ' %</div> Themes',
-		'href' => '#'
-	) );
-	$wp_admin_bar->add_menu( array(
-	    'parent' => 'LDB_VaultPress_status',
-		'id' => 'LDB_VaultPress_Database',
-		'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->tables_progress . ' %</div> Database',
-		'href' => '#'
-	) );
+	if( $ticker->uploads_progress ) {
+		$wp_admin_bar->add_menu( array(
+		    'parent' => 'LDB_VaultPress_status',
+			'id' => 'LDB_VaultPress_Uploads',
+			'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->uploads_progress . ' %</div> Uploads',
+			'href' => '#'
+		) );
+	}
+	if( $ticker->plugins_progress ) {
+		$wp_admin_bar->add_menu( array(
+		    'parent' => 'LDB_VaultPress_status',
+			'id' => 'LDB_VaultPress_Plugins',
+			'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->plugins_progress . ' %</div> Plugins',
+			'href' => '#'
+		) );
+	}
+	if( $ticker->themes_progress ) {
+		$wp_admin_bar->add_menu( array(
+		    'parent' => 'LDB_VaultPress_status',
+			'id' => 'LDB_VaultPress_Themes',
+			'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->themes_progress . ' %</div> Themes',
+			'href' => '#'
+		) );
+	}
+	if( $ticker->tables_progress ) {
+		$wp_admin_bar->add_menu( array(
+		    'parent' => 'LDB_VaultPress_status',
+			'id' => 'LDB_VaultPress_Database',
+			'title' => '<div class="ldb_vaultpress_status_count">' . $ticker->tables_progress . ' %</div> Database',
+			'href' => '#'
+		) );
+	}
+	if( $ticker->message ) {
+		$wp_admin_bar->add_menu( array(
+		    'parent' => 'LDB_VaultPress_status',
+			'id' => 'LDB_VaultPress_Message',
+			'title' => $ticker->message,
+			'href' => '#'
+		) );
+	}
 }
 
 function LDB_VaultPress_Status_css() {
