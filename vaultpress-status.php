@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: VaultPress Status
- * Plugin URI: http://automattic.com/wordpress-plugins/
+ * Plugin URI: http://www.lucdebrouwer.nl/wordpress-plugin-vaultpress-status/
  * Description: Adds VaultPress' status to your admin bar. To give you that nice and secured feeling, even in the front-end of your website.
  * Version: 0.2
  * Author: Luc De Brouwer
