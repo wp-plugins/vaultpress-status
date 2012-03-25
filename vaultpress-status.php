@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: VaultPress Status
- * Plugin URI: http://www.lucdebrouwer.nl/wordpress-plugin-vaultpress-status/
+ * Plugin URI: http://automattic.com/wordpress-plugins/
  * Description: Adds VaultPress' status to your admin bar. To give you that nice and secured feeling, even in the front-end of your website.
- * Version: 0.2
+ * Version: 0.3
  * Author: Luc De Brouwer
  * Author URI: http://www.lucdebrouwer.nl/
  *
@@ -11,7 +11,8 @@
 
 function LDB_VaultPress_Status_render() {
 	global $wp_admin_bar;
-	$ticker = json_decode(vaultpress_contact_service('ticker'));
+	$vp = new VaultPress;
+	$ticker = json_decode( $vp->contact_service( 'ticker' ) );
 	$wp_admin_bar->add_menu( array(
 		'id' => 'LDB_VaultPress_status',
 		'title' => 'VaultPress Status',
@@ -71,7 +72,7 @@ function LDB_VaultPress_Status_css() {
 <?php
 }
 
-if( function_exists( 'vaultpress_contact_service' ) ) {
+if( class_exists( 'VaultPress' ) ) {
 	add_action( 'wp_head', 'LDB_VaultPress_Status_css' );
 	add_action( 'wp_before_admin_bar_render', 'LDB_VaultPress_Status_render' );
 }

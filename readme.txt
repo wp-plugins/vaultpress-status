@@ -3,8 +3,8 @@ Contributors: ldebrouwer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5DXH3X8NNVNJ
 Tags: VaultPress, status, admin bar
 Requires at least: 3.1
-Tested up to: 3.1.1
-Stable tag: 0.2
+Tested up to: 3.3.1
+Stable tag: 0.3
 
 VaultPress bring your VaultPress backup status to your WordPress Admin Bar.
 
@@ -30,6 +30,10 @@ You probably haven't installed VaultPress yet. Go check it out! http://www.vault
 2. VaultPress Status in the Admin Bar displaying the latest message by VaultPress.
 
 == Changelog ==
+
+= 0.3 =
+* Brings support for VaultPress plugin version 1.0 and higher.
+* Drops support for VaultPress plugin version 0.9.x and lower.
 
 = 0.2 =
 * Now also displaying the latest message sent by VaultPress.
